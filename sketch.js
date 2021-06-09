@@ -15,9 +15,7 @@ function setup() {
             cellState[x][y] = false;
         }
     }
-}
 
-function draw() {
     push();
     stroke(150);
     for(let x = 0; x < cellState.length; x++) {
@@ -27,6 +25,9 @@ function draw() {
         }
     }
     pop();
+}
+
+function draw() {
 }
 
 function mousePressed() {
@@ -39,7 +40,13 @@ function mousePressed() {
         }
         cellState[x][y] = !cellState[x][y];
         mouseMemory.push(`${x}${y}`);
-    }, 10);
+
+        push();
+        stroke(150);
+        if(cellState[x][y] === false) {fill('white');} else {fill('black');}
+        rect(x * size, y * size, size, size);
+        pop();
+    }, 1);
 }
 
 function mouseReleased() {
@@ -58,10 +65,6 @@ function keyPressed() {
     let newCellState = cellState;
 
     function update() {
-        for(let x = 0; x < cellState.length; x++) {
-            for(let y = 0; y < cellState[x].length; y++) {
 
-            }
-        }
     }
 }
